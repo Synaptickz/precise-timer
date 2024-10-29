@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Precise Timer</title>
+    <style>
+        body {
+            background-color: transparent;
+        }
+
+        .timer {
+            font-family: monospace;
+            font-size: 44px;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            white-space: pre;
+        }
+
+        .timer-white {
+            color: white;
+        }
+
+        .timer-black {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <pre id="timer-black" class="timer timer-black"></pre>
+    <pre id="timer-white" class="timer timer-white"></pre>
+    <script>
+        const timer1 = document.getElementById('timer-black');
+        const timer2 = document.getElementById('timer-white');
+        requestAnimationFrame(function update() {
+            const date = new Date();
+            const ms = date.valueOf();
+
+            const outputText = `${date.toUTCString()}\n${ms}`;
+
+            timer1.innerText = timer2.innerText = outputText;
+
+            requestAnimationFrame(update);
+        });
+    </script>
+</body>
+
+</html>
